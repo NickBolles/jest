@@ -22,4 +22,13 @@ describe('setup', () => {
     expect(workspace.rootPath).toEqual('root_path');
     expect(workspace.pathToJest).toEqual('path_to_jest');
   });
+  it('accounts for paths with spaces', () => {
+    const workspace = new ProjectWorkspace(
+      'root_path/another path',
+      'path_to_jest',
+      'path_to_config',
+      1000,
+    );
+    expect(workspace.rootPath).toEqual('root_path/another\\ path');
+  });
 });

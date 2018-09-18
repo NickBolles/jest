@@ -6,6 +6,7 @@
  *
  * @flow
  */
+import {normalize} from 'path';
 
 /**
  * Represents the project that the extension is running on and it's state
@@ -68,7 +69,7 @@ export default class ProjectWorkspace {
     collectCoverage: ?boolean,
     debug: ?boolean,
   ) {
-    this.rootPath = rootPath;
+    this.rootPath = normalize(rootPath.replace(/(\s+)/g, '\\$1'));
     this.pathToJest = pathToJest;
     this.pathToConfig = pathToConfig;
     this.localJestMajorVersion = localJestMajorVersion;
